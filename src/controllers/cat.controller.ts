@@ -1,13 +1,17 @@
 import { Request, Response } from "express";
-import axios from "axios";
-import https from "https";
+import * as service from "../services/cat.service.ts";
+import requestValidator from "../validator/request.validator.ts";
+import message from "../common/message.common.ts";
 
 export const findAll = async (req: Request, res: Response) => {
-  return res.status(200).json({ cat: "meow" });
+  let data = await service.findAll();
+  return res.status(200).json(data);
 };
 
 export const findById = async (req: Request, res: Response) => {
-  return res.status(200).json({ id: 1, cat: "meow" });
+  let id = req.params["id"];
+  let data = await service.findById(id);
+  return res.status(200).json(data);
 };
 
 export const create = async (req: Request, res: Response) => {

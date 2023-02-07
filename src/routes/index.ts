@@ -1,4 +1,4 @@
-import catRoute from "./catRoute.ts";
+import catRoute from "./cat.route.ts";
 
 const routes = (app: any) => {
   catRoute(app);

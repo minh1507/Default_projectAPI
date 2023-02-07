@@ -9,6 +9,7 @@ import routes from "../routes/index.ts";
 dotenv.config();
 const port = process.env.PORT;
 const app: Express = express();
+
 app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
   const corsWhitelist = ["https://localhost:4200"];
@@ -43,5 +44,5 @@ var options = {
 https.createServer(options, app).listen(port, function () {
   console.log("Server listening on port: " + port);
   console.log("Server using Https proxy");
-  console.log("Domain: https://localhost:" + port);
+  console.log(`Domain: ${process.env.ROOT_DOMAIN}: ${port}`);
 });

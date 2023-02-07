@@ -8,7 +8,7 @@ import {
   deleteMany,
   update,
   test,
-} from "../controllers/catController.ts";
+} from "../controllers/cat.controller.ts";
 
 let router = express.Router();
 
