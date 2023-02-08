@@ -1,4 +1,4 @@
-import { cat } from "../model/cat.interface";
+import { cat } from "../models/cat.interface";
 
 export const findAll = async () => {
   return new Promise(async (resolve, reject) => {

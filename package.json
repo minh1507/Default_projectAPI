@@ -1,5 +1,5 @@
 {
-  "name": "detech",
+  "name": "default_project",
   "version": "1.0.0",
   "description": "",
   "main": "src/servers/index.js",
@@ -7,7 +7,10 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "serve": "nodemon --watch src src/servers/cat.server.ts",
-    "migrate": "npx sequelize-cli db:migrate"
+    "migrate": "npx sequelize-cli db:migrate",
+    "new-migration": "npx sequelize-cli migration:generate --name $NAME",
+    "new-seed": "npx sequelize-cli seed:generate --name $NAME",
+    "seed": "npx sequelize-cli db:seed:all"
   },
   "author": "Duong Duc Anh",
   "license": "ISC",
