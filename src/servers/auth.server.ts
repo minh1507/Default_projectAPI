@@ -11,7 +11,7 @@ import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "jso
 
 dotenv.config();
 
-const port = process.env.ANIMAL_PORT;
+const port = process.env.AUTH_PORT;
 const app: Express = express();
 
 app.set("trust proxy", true);
@@ -38,7 +38,7 @@ app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi))
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
-routes.animalRoutes(app);
+routes.authRoutes(app);
 seq.connectDB();
 
 var options = {

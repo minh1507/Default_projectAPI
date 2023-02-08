@@ -6,16 +6,21 @@
   "type": "module",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "serve": "nodemon --watch src src/servers/cat.server.ts",
+    "animal-serve": "nodemon --watch src src/servers/cat.server.ts",
+    "auth-serve": "nodemon --watch src src/servers/auth.server.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "new-migration": "npx sequelize-cli migration:generate --name $NAME",
     "new-seed": "npx sequelize-cli seed:generate --name $NAME",
-    "seed": "npx sequelize-cli db:seed:all"
+    "seed": "npx sequelize-cli db:seed:all",
+    "dev": "npm run animal-serve & npm run auth-serve",
+    "kill-port": "sudo kill -9 `sudo lsof -t -i:$PORT`",
+    "list-port": "sudo ss -ltn"
   },
   "author": "Duong Duc Anh",
   "license": "ISC",
   "dependencies": {
     "babel-register": "^6.26.0",
+    "bcrypt-ts": "^3.0.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^3.1.1",

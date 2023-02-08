@@ -1,10 +1,10 @@
-import { cat } from "../models/cat.interface";
+import { cat,catWithId } from "../models/cat.interface";
 import { Cat } from "../entities/cat.entities.ts";
 
 export const findAll = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data = await Cat.findAll();
+      const data:catWithId = await Cat.findAll();
       resolve(data);
     } catch (error) {
       reject(error);
@@ -15,10 +15,7 @@ export const findAll = async () => {
 export const findById = async (id: string) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data = {
-        id: id,
-        cat: "meow",
-      };
+      const data:catWithId = await Cat.findOne({where: {id:id}})
       resolve(data);
     } catch (error) {
       reject(error);
@@ -37,17 +34,6 @@ export const create = async (data: cat) => {
   });
 };
 
-
-export const createMany = async (data: cat) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      resolve(data);
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-
 export const deleteById= async (id: string) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -58,16 +44,6 @@ export const deleteById= async (id: string) => {
         resolve({mes: "Success"});
       }
       resolve({mes: "Failed"});
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-
-export const deleteMany = async (data: cat) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      resolve(data);
     } catch (error) {
       reject(error);
     }

@@ -1,5 +1,6 @@
 //run project
-npm run serve
+    parallel: npm run dev
+    separate: npm run animal-serve and npm run auth-serve
 
 //build project
 npm run build
@@ -11,7 +12,6 @@ config type of database in /env/connect.database.ts and /env/database.cjs in pro
     + create new migration: npm run new-migration (name)
     + seed command: npm run seed
     + create new seed: npm run new-seed (name)
-
 
 //no copyright
 author: Duong Duc Anh
