@@ -58,6 +58,9 @@
     "/cat": {
       "get": {
         "tags": ["Cats"],
+        "security": [
+          {"Bearer": []}
+        ],
         "summary": "Get all cats",
         "responses": {
           "200": {
@@ -65,10 +68,23 @@
             "schema": {
               "$ref": "#/definitions/Cats"
             }
+            
+          },
+          "401":{
+            "description": "Unauthorized"
           }
         }
       }
      
+    }
+  },
+  "securityDefinitions": {
+    "Bearer":{
+      "type": "apiKey",
+      "bearerFormat": "JWT",
+      "in": "header",
+      "description": "Enter the token with the `Bearer: ` prefix, e.g. Bearer abcde1234",
+      "name": "Authorization"
     }
   }
 }
