@@ -1,0 +1,74 @@
+
+{
+  "swagger": "2.0",
+  "info": {
+      "title": "Cat",
+      "version": "1.0.0",
+      "description": "Cat API Documentation",
+      "license": {
+        "name": "MIT"
+      }
+  },
+  "host": "localhost:3000",
+  "schemes": ["https"],
+  "tags": [
+    {
+      "name": "Cats",
+      "description": "API for Cat"
+    }
+  ],
+  "definitions": {
+    "id": {
+      "properties": {
+        "uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "Cat": {
+      "type": "object",
+      "properties": {
+        "name":{
+          "type": "string"
+        },
+        "age": {
+          "type": "integer"
+        }
+      }
+    },
+    "Cats":{
+      "type": "object",
+      "properties": {
+        "cats":{
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Cat"
+          }
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cat": {
+      "get": {
+        "tags": ["Cats"],
+        "summary": "Get all cats",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Cats"
+            }
+          }
+        }
+      }
+     
+    }
+  }
+}

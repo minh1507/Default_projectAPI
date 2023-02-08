@@ -5,9 +5,13 @@ import https from "https";
 import bodyParser from "body-parser";
 import pem from "https-pem";
 import routes from "../routes/index.ts";
+import swaggerUi from "swagger-ui-express"
+import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
 
 dotenv.config();
 const port = process.env.PORT;
+
+
 const app: Express = express();
 
 app.use(cors());
@@ -28,6 +32,7 @@ app.use((req: any, res: any, next: NextFunction) => {
   }
   next();
 }, cors({ maxAge: 84600 }));
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi))
 
 app.set("trust proxy", true);
 
