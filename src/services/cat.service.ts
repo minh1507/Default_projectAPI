@@ -1,11 +1,10 @@
 import { cat } from "../models/cat.interface";
-
+// import {Sequelize} from "../entities/index.js"
+import { Cat } from "../entities/cat.entities.ts";
 export const findAll = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data = {
-        cat: "meow",
-      };
+      const data = await Cat.findAll();
       resolve(data);
     } catch (error) {
       reject(error);

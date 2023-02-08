@@ -5,12 +5,7 @@ import message from "../common/message/message.common.ts";
 
 export const findAll = async (req: Request, res: Response) => {
   let result = await service.findAll();
-  let aut = req.headers["authorization"];
-  if(aut)
-  {
-    return res.status(200).json(result);
-  }
-  return res.status(401).json({me: "me"});
+  return res.status(200).json(result);
 };
 
 export const findById = async (req: Request, res: Response) => {

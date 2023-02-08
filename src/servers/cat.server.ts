@@ -6,7 +6,7 @@ import bodyParser from "body-parser";
 import pem from "https-pem";
 import routes from "../routes/index.ts";
 import swaggerUi from "swagger-ui-express"
-import connectDB from "../config/connect.database.ts";
+import * as seq from "../config/connect.database.ts";
 import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
 
 dotenv.config();
@@ -39,7 +39,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 routes(app);
-connectDB();
+seq.connectDB();
 
 var options = {
   key: pem.key,

@@ -1,12 +1,15 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
+import { Cat } from "../entities/cat.entities.ts";
 
-const sequelize = new Sequelize("Cat", "root", undefined, {
+export const sequelize = new Sequelize("Cat", "root", undefined, {
   host: "localhost",
   dialect: "mysql",
+  username: "root",
   logging: false,
+  models: [Cat]
 });
 
-let connectDB = async () => {
+export const connectDB = async () => {
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
@@ -15,4 +18,3 @@ let connectDB = async () => {
   }
 };
 
-export default connectDB;
