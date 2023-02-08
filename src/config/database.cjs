@@ -3,6 +3,7 @@ require("dotenv").config();
 const host = process.env.DB_HOST;
 const username = process.env.DB_USER;
 const database = process.env.DB_NAME;
+const timezone = process.env.DB_TIMEZONE
 
 module.exports = {
   development: {
@@ -14,6 +15,6 @@ module.exports = {
     query: {
       raw: true,
     },
-    timezone: "+07:00",
+    timezone: timezone,
   },
 };
