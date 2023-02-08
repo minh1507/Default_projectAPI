@@ -1,6 +1,6 @@
 import { cat } from "../models/cat.interface";
-// import {Sequelize} from "../entities/index.js"
 import { Cat } from "../entities/cat.entities.ts";
+
 export const findAll = async () => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -29,6 +29,7 @@ export const findById = async (id: string) => {
 export const create = async (data: cat) => {
   return new Promise(async (resolve, reject) => {
     try {
+      await Cat.create({...data})
       resolve(data);
     } catch (error) {
       reject(error);
@@ -50,11 +51,13 @@ export const createMany = async (data: cat) => {
 export const deleteById= async (id: string) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data = {
-        id: id,
-        cat: "meow",
-      };
-      resolve(data);
+      const record = await Cat.findByPk(id)
+      if(record)
+      {
+        await Cat.destroy({where: {id}})
+        resolve({mes: "Success"});
+      }
+      resolve({mes: "Failed"});
     } catch (error) {
       reject(error);
     }
