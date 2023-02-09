@@ -1,6 +1,6 @@
 //run project
-    parallel: npm run dev
-    separate: npm run animal-serve and npm run auth-serve
+    parallel: npm run dev (if you want more server config in package.json)
+    separate: npm run animal-serve (or more server)
 
 //build project
 npm run build

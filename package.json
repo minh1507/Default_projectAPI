@@ -7,12 +7,11 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "animal-serve": "nodemon --watch src src/servers/cat.server.ts",
-    "auth-serve": "nodemon --watch src src/servers/auth.server.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "new-migration": "npx sequelize-cli migration:generate --name $NAME",
     "new-seed": "npx sequelize-cli seed:generate --name $NAME",
     "seed": "npx sequelize-cli db:seed:all",
-    "dev": "npm run animal-serve & npm run auth-serve",
+    "dev": "npm run animal-serve",
     "kill-port": "sudo kill -9 `sudo lsof -t -i:$PORT`",
     "list-port": "sudo ss -ltn"
   },
