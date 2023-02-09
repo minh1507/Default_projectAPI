@@ -6,5 +6,12 @@ export interface user{
 export interface userWithId{
     id: number;
     username: string;
-    password: string
+    password: string,
+    refreshToken: string;
+    accessToken: string
+}
+
+export interface userWithRefresh{
+    username: string;
+    refreshToken: string;
 }

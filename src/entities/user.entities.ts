@@ -25,4 +25,16 @@ export class User extends Model<UserAttributes, UserCreationAttributes>{
         allowNull: true
     })
     password!: string;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
+    accessToken!: string;
+
+    @Column({
+        type: DataType.TEXT,
+        allowNull: true
+    })
+    refreshToken!: string;
 }

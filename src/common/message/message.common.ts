@@ -6,6 +6,8 @@ const message = {
     SUCCESS: "Success",
     ACCOUNT_NOT_FOUND: "Account not found",
     WRONG_ACCOUNT: "Wrong password or username",
+    CREATE_ACCOUNT_SUCCESS: "Create account successfully",
+    WRONG_USERNAME_REFRESHTK: "Username or refresh token not found"
 }
 
 export default message

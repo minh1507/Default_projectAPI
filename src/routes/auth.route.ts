@@ -1,12 +1,13 @@
 import express from "express";
-import { register,login } from "../controllers/user.controller.ts";
+import { register, login, refresh } from "../controllers/auth.controller.ts";
 
 let router = express.Router();
 
 let authRoute = (app: any) => {
   router.post("/register", register);
   router.post("/login", login);
-  return app.use("/user", router);
+  router.post("/refresh", refresh)
+  return app.use("/auth", router);
 };
 
 export default authRoute;

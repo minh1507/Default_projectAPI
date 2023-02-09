@@ -1,4 +1,4 @@
-import { user } from "../models/user.interface";
+import { user, userWithRefresh } from "../models/user.interface";
 
 export const formData = (data: user) => {
   if (data.username && data.password && data.username.toLowerCase()!=data.password.toLowerCase()) {
@@ -19,4 +19,11 @@ export const username = (data: user) => {
     return true
   }
   return false
+}
+
+export const refreshTK = (data: userWithRefresh)=>{
+    if(data.refreshToken && data.username){
+      return true
+    }
+    return false
 }
