@@ -14,5 +14,14 @@ export const register = async (req: Request, res: Response) => {
 };
 
 export const login = async (req: Request, res: Response) => {
-  return res.status(200).json({ mes: "success" });
+  let data:user=req.body;
+  if(validator.formData(data)){
+    let result = await service.login(data);
+    if(result){
+
+      return res.status(200).json({ data: result.data });
+    }
+    return res.status(400).json({ mes: message.WRONG_ACCOUNT });
+  }
+  return res.status(400).json({ mes: message.INVALID_BODY_VALUE });
 };

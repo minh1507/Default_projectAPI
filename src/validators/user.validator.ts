@@ -1,7 +1,7 @@
 import { user } from "../models/user.interface";
 
 export const formData = (data: user) => {
-  if (data.username && data.password && data.username!=data.password) {
+  if (data.username && data.password && data.username.toLowerCase()!=data.password.toLowerCase()) {
     return true;
   }
   return false;

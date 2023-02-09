@@ -1,6 +1,7 @@
 import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import { Cat } from "../entities/cat.entities.ts";
+import { User } from "../entities/user.entities.ts";
 
 const host = process.env.DB_HOST;
 
@@ -9,7 +10,7 @@ export const sequelize = new Sequelize("Cat", "root", undefined, {
   dialect: "mysql",
   username: process.env.DB_USER,
   logging: false,
-  models: [Cat]
+  models: [Cat, User]
 });
 
 export const connectDB = async () => {
