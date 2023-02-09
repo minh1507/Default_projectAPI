@@ -1,4 +1,4 @@
-//run project<br />
+//run project\
     parallel: npm run dev (if you want more server config in package.json)<br />
     separate: npm run animal-serve (or more server)<br />
 
