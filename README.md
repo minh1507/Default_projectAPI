@@ -1,22 +1,22 @@
-//run project
-    parallel: npm run dev (if you want more server config in package.json)
-    separate: npm run animal-serve (or more server)
+//run project<br />
+    parallel: npm run dev (if you want more server config in package.json)<br />
+    separate: npm run animal-serve (or more server)<br />
 
-//build project
-npm run build
+//build project<br />
+npm run build<br />
 
-//database
-config database properties in .env file
-config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect
-    + migrate command: npm run migrate
-    + create new migration: npm run new-migration (name)
-    + seed command: npm run seed
-    + create new seed: npm run new-seed (name)
+//database<br />
+config database properties in .env file<br />
+config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect<br />
+    + migrate command: npm run migrate<br />
+    + create new migration: npm run new-migration (name)<br />
+    + seed command: npm run seed<br />
+    + create new seed: npm run new-seed (name)<br />
 
-//swagger api
-ROOT_DOMAIN:PORT/api
+//swagger api<br />
+ROOT_DOMAIN:PORT/api<br />
 
-//no copyright
-author: Duong Duc Anh
-gmail: duongdoican@gmail.com
-facebook: https://www.facebook.com/ST.LGZ/
+//no copyright<br />
+author: Duong Duc Anh<br />
+gmail: duongdoican@gmail.com<br />
+facebook: https://www.facebook.com/ST.LGZ/<br />
