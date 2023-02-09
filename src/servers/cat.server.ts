@@ -12,7 +12,7 @@ import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "jso
 dotenv.config();
 
 const port = process.env.ANIMAL_PORT;
-const app: Express = express();
+export const app: Express = express();
 
 app.set("trust proxy", true);
 
