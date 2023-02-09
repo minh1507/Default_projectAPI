@@ -15,6 +15,10 @@
     {
       "name": "Cats",
       "description": "API for Cat"
+    },
+    {
+      "name": "Auths",
+      "description": "API for Athentication"
     }
   ],
   "definitions": {
@@ -46,6 +50,28 @@
           }
         }
       }
+    },
+    "Auth": {
+      "type": "object",
+      "properties": {
+        "username":{
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthRefreshToken": {
+      "type": "object",
+      "properties": {
+        "username":{
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
     }
   },
   "consumes": [
@@ -75,7 +101,81 @@
           }
         }
       }
-     
+    },
+    "/auth/login":{
+      "post": {
+        "tags": ["Auths"],
+        "summary": "Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/Auth"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400":{
+            "description": "Wrong parameters"
+          }
+        }
+      }
+    },
+    "/auth/register":{
+      "post": {
+        "tags": ["Auths"],
+        "summary": "Register",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Register",
+            "schema": {
+              "$ref": "#/definitions/Auth"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400":{
+            "description": "Wrong parameters"
+          }
+        }
+      }
+    },
+    "/auth/refresh":{
+      "post": {
+        "tags": ["Auths"],
+        "summary": "Refresh Token",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Refresh Token",
+            "schema": {
+              "$ref": "#/definitions/AuthRefreshToken"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400":{
+            "description": "Wrong parameters"
+          }
+        }
+      }
     }
   },
   "securityDefinitions": {

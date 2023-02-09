@@ -13,6 +13,9 @@ config type of database in /env/connect.database.ts and /env/database.cjs in pro
     + seed command: npm run seed
     + create new seed: npm run new-seed (name)
 
+//swagger api
+ROOT_DOMAIN:PORT/api
+
 //no copyright
 author: Duong Duc Anh
 gmail: duongdoican@gmail.com
