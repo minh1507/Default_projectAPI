@@ -53,6 +53,7 @@ export const deleteById= async (id: string) => {
 export const update = async (id: number, data: cat) => {
   return new Promise(async (resolve, reject) => {
     try {
+      await Cat.update(data, {where: {id: id}})
       resolve(data);
     } catch (error) {
       reject(error);

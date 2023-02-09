@@ -17,6 +17,7 @@ export const findById = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   let data:cat = req.body;
+  
   if (validator.create(data)) {
     let result = await service.create(data);
     return res.status(200).json(result);

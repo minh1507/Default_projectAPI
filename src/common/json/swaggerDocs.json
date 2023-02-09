@@ -100,6 +100,32 @@
             "description": "Unauthorized"
           }
         }
+      },
+      "post": {
+        "tags": ["Cats"],
+        "summary": "Create new cat",
+        "security": [
+          {"Bearer": []}
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Cat",
+            "schema": {
+              "$ref": "#/definitions/Cat"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400":{
+            "description": "Wrong parameters"
+          }
+        }
       }
     },
     "/auth/login":{
@@ -123,6 +149,81 @@
           },
           "400":{
             "description": "Wrong parameters"
+          }
+        }
+      }
+    },
+    "/cat/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "Id for cat",
+          "type": "string"
+        }
+      ],
+      "delete": {
+        "tags": ["Cats"],
+        "security": [
+          {"Bearer": []}
+        ],
+        "summary": "Delete a cat",
+        "responses": {
+          "200": {
+            "description": "OK" 
+          },
+          "401":{
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Cats"],
+        "security": [
+          {"Bearer": []}
+        ],
+        "summary": "Get a cat",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Cats"
+            }
+            
+          },
+          "401":{
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cats"],
+        "security": [
+          {"Bearer": []}
+        ],
+        "summary": "Update a cat",
+        "parameters": [
+          {
+            "in":"body",
+            "name":"body",
+            "required":true,
+            "description": "Update a cat",
+            "schema": {
+              "$ref":"#/definitions/Cat"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Cat"
+            }
+            
+          },
+          "401":{
+            "description": "Unauthorized"
           }
         }
       }

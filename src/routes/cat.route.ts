@@ -14,10 +14,10 @@ let router = express.Router();
 
 let catRoute = (app: any) => {
   router.get("/", auth.authorizations, findAll);
-  router.get("/:id", findById);
-  router.post("/", create);
-  router.delete("/:id", deleteById);
-  router.put("/:id", update);
+  router.get("/:id",auth.authorizations, findById);
+  router.post("/", auth.authorizations, create);
+  router.delete("/:id",auth.authorizations, deleteById);
+  router.put("/:id",auth.authorizations, update);
   return app.use("/cat", router);
 };
 
