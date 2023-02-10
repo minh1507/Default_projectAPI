@@ -5,17 +5,25 @@
     "target": "es5",
     "module": "ESNext",
     "lib": ["es6"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "paths": {      
+      "@common/": ["src/common/*"]
+    },
+    
   },
   "ts-node": {
     "esm": true,
     "transpileOnly": true,
     "swc": true
-  }
+  },
+  "include": ["next-env.d.ts", "twin.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
 }
