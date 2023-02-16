@@ -8,6 +8,8 @@ import * as routes from "../routes/index.ts";
 import swaggerUi from "swagger-ui-express"
 import * as seq from "../config/connect.database.ts";
 import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
+import helmet from "helmet";
+
 
 dotenv.config();
 
@@ -15,7 +17,7 @@ const port = process.env.ANIMAL_PORT;
 export const app: Express = express();
 
 app.set("trust proxy", true);
-
+app.use(helmet());
 app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
   const corsWhitelist = ["https://localhost:4200"];
@@ -34,7 +36,7 @@ app.use((req: any, res: any, next: NextFunction) => {
   }
   next();
 }, cors({ maxAge: 84600 }));
-app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi))
+app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi))
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 

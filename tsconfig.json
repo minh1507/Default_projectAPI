@@ -1,7 +1,15 @@
 {
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "build",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+     "paths": {
+      "@app/*": ["./*"],
+      "@common/*": ["common/*"],
+     },
+      "plugins": [
+        { "transform": "typescript-transform-paths" }
+      ],
     "target": "es5",
     "module": "ESNext",
     "lib": ["es6"],
@@ -12,18 +20,19 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "experimentalDecorators": true,
-    "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
-    "paths": {      
-      "@common/": ["src/common/*"]
-    },
-    
+    "allowJs": true
   },
   "ts-node": {
     "esm": true,
     "transpileOnly": true,
-    "swc": true
+    "swc": true,
+    "require": [  // set this so you dont need to use ts-node -r 
+     "typescript-transform-paths/register",
+     "tsconfig-paths/register"
+    ],
+    
   },
-  "include": ["next-env.d.ts", "twin.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*.ts","./","src/*.ts"],
   "exclude": ["node_modules"],
 }

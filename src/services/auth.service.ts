@@ -3,6 +3,7 @@ import { user, userWithId, userWithRefresh } from "../models/user.interface";
 import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
 import { User } from "../entities/user.entities.ts";
 import message from "../common/message/message.common.ts";
+
 import jwt from "jsonwebtoken";
 
 export const register = async (data: user) => {
