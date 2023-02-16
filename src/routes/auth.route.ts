@@ -8,7 +8,7 @@ let authRoute = (app: any) => {
   router.post("/register", rate.auth, register);
   router.post("/login", rate.auth, login);
   router.post("/refresh", rate.auth, refresh);
-  return app.use("/auth", rate.auth, router);
+  return app.use("/api/auth", rate.auth, router);
 };
 
 export default authRoute;

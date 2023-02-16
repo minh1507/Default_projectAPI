@@ -9,7 +9,7 @@ import swaggerUi from "swagger-ui-express"
 import * as seq from "../config/connect.database.ts";
 import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
 import helmet from "helmet";
-
+import interceptor from "../middleware/intecepter.middleware.ts";
 
 dotenv.config();
 
@@ -36,6 +36,7 @@ app.use((req: any, res: any, next: NextFunction) => {
   }
   next();
 }, cors({ maxAge: 84600 }));
+app.use((req,res,next) => {interceptor(req,res,next)})
 app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi))
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));

@@ -9,7 +9,7 @@
         "name": "MIT"
       }
   },
-  "host": "localhost:3000",
+  "host": "localhost:3000/api",
   "schemes": ["https"],
   "tags": [
     {

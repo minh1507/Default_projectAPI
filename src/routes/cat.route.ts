@@ -14,7 +14,7 @@ import * as rate from "../middleware/rateLimit.middleware.ts";
 let router = express.Router();
 
 let catRoute = (app: any) => {
-  router.get("/", rate.cat,  findAll);
+  router.get("/", rate.cat,  auth.authorizations, findAll);
   router.get("/:id", rate.cat, auth.authorizations, findById);
   router.post("/", rate.cat, auth.authorizations, create);
   router.delete("/:id", rate.cat, auth.authorizations, deleteById);
