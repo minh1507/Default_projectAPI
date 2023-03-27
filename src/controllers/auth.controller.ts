@@ -20,7 +20,9 @@ export const login = async (req: Request, res: Response) => {
     if(!result.errCode){
       return res.status(200).json({ data: result.data });
     }
-    console.log(1)
+    if(result.errCode == 2){
+      return res.status(200).json({ mes: result.mes });
+    }
     return res.status(400).json({ mes: message.WRONG_ACCOUNT });
   }
   return res.status(400).json({ mes: message.INVALID_BODY_VALUE });

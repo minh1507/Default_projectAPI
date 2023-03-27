@@ -1,40 +1,56 @@
-import { Table, Model, Column, DataType } from "sequelize-typescript";
-import { Optional } from 'sequelize';
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from "sequelize-typescript";
+import { Optional } from "sequelize";
+import { Role } from "./role.entities.ts";
 
 interface UserAttributes {
-    id: number,
-    username: string;
-    password: string;
-  }
-  interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
+  id: number;
+  username: string;
+  password: string;
+  roleId: number;
+}
+interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
+type RoleType = typeof Role;
 
 @Table({
-    timestamps: false,
-    tableName: "users"
+  timestamps: false,
+  tableName: "users",
 })
+export class User extends Model<UserAttributes, UserCreationAttributes> {
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  username!: string;
 
-export class User extends Model<UserAttributes, UserCreationAttributes>{
-    @Column({
-        type: DataType.STRING,
-        allowNull: true
-    })
-    username!: string;
-    
-    @Column({
-        type: DataType.TEXT,
-        allowNull: true
-    })
-    password!: string;
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  password!: string;
 
-    @Column({
-        type: DataType.TEXT,
-        allowNull: true
-    })
-    accessToken!: string;
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  accessToken!: string;
 
-    @Column({
-        type: DataType.TEXT,
-        allowNull: true
-    })
-    refreshToken!: string;
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  refreshToken!: string;
+
+  @ForeignKey(() => Role)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  roleId!: number;
+
+  @BelongsTo(() => Role, "roleId")
+  role!: RoleType;
 }

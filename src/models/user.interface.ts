@@ -1,6 +1,7 @@
 export interface user{
     username: string;
     password: string
+    type: string
 }
 
 export interface userWithId{

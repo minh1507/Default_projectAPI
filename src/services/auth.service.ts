@@ -17,6 +17,7 @@ export const register = async (data: user) => {
         await User.create({
           username: data.username,
           password: hashPassword,
+          roleId: data.type
         });
         resolve({ mes: message.CREATE_ACCOUNT_SUCCESS });
       }
@@ -30,6 +31,7 @@ export const register = async (data: user) => {
 export const login = async (data: user) => {
   return new Promise(async (resolve, reject) => {
     try {
+    
       const record: userWithId = await User.findOne({
         where: { username: data.username },
       });
@@ -122,7 +124,10 @@ export const login = async (data: user) => {
         resolve({ errCode: 1 });
       }
 
-      resolve({ mes: message.ACCOUNT_NOT_FOUND });
+
+      console.log(data)
+
+      resolve({errCode: 2, mes: message.ACCOUNT_NOT_FOUND });
     } catch (error) {
       reject(error);
     }

@@ -17,6 +17,25 @@ module.exports = {
         age: 3,
       },
     ]);
+    await queryInterface.bulkInsert("roles", [
+      {
+        name: "admin",
+        note: "admin site",
+      },
+      {
+        name: "user",
+        note: "user site",
+      },
+    ]);
+    await queryInterface.bulkInsert("users", [
+      {
+        roleId: 1,
+        username: "duongdoican@gmail.com",
+        password: "$2a$12$OQHHb/D9JAs6tyclVzPWMeSVkbcR2tSmmMq9VHaqnWm3C/UKPYyNm",
+        accessToken: "",
+        refreshToken: ""
+      }
+    ]);
   },
 
   async down(queryInterface, Sequelize) {

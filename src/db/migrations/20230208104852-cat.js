@@ -8,7 +8,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: Sequelize.STRING,
-      age: Sequelize.INTEGER
+      age: Sequelize.INTEGER,
     });
   },
   down: async (queryInterface, Sequelize) => {

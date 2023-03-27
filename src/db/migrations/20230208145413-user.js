@@ -10,6 +10,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      roleId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "roles",
+          key: "id",
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+      },
       username: Sequelize.STRING,
       password: Sequelize.TEXT,
       accessToken: Sequelize.TEXT,

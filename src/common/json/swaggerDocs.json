@@ -10,7 +10,7 @@
       }
   },
   "host": "localhost:3000/api",
-  "schemes": ["https"],
+  "schemes": ["https", "http"],
   "tags": [
     {
       "name": "Cats",
@@ -84,9 +84,7 @@
     "/cat": {
       "get": {
         "tags": ["Cats"],
-        "security": [
-          {"Bearer": []}
-        ],
+        
         "summary": "Get all cats",
         "responses": {
           "200": {
