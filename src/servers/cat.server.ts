@@ -18,12 +18,13 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const __dirsource = path.join(__dirname, '..')
 const port = process.env.ANIMAL_PORT;
 export const app: Express = express();
 
 const storage = multer.diskStorage({
   destination: function(req:any, file:any, callback:any) {
-    callback(null, __dirname + "/uploads");
+    callback(null, __dirsource + "/files");
   },
   filename: function(req: any, file:any, callback:any) {
     callback(null, file.originalname);
