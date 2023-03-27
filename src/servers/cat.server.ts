@@ -13,6 +13,8 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import multer from "multer";
+import cookieParser from "cookie-parser";
+import session from "express-session";
 
 dotenv.config();
 
@@ -30,6 +32,7 @@ const storage = multer.diskStorage({
     callback(null, file.originalname);
   },
 });
+
 var upload = multer({ storage: storage });
 
 app.set("trust proxy", true);
@@ -38,7 +41,7 @@ app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
   const corsWhitelist = ["http://localhost:7000"];
   if (corsWhitelist.indexOf(req.headers.origin) != -1) {
-    console.log(1)
+    console.log(1);
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -51,16 +54,24 @@ app.use((req: any, res: any, next: NextFunction) => {
     );
     res.setHeader("Access-Control-Allow-Credentials", true);
     next();
-  }
-  else{
+  } else {
     return res.status(500).json("Server not found");
   }
-  
 }, cors({ maxAge: 84600 }));
 app.use((req, res, next) => {
   interceptor(req, res, next);
 });
-
+app.use(cookieParser());
+app.use(
+  session({
+    secret: process.env.PRIVATE_TOKEN,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 100,
+    },
+  })
+);
 app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
 app.use(bodyParser.json({ limit: "50000mb" }));
 app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
