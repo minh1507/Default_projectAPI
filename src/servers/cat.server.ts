@@ -18,26 +18,27 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const __dirsource = path.join(__dirname, '..')
+const __dirsource = path.join(__dirname, "..");
 const port = process.env.ANIMAL_PORT;
 export const app: Express = express();
 
 const storage = multer.diskStorage({
-  destination: function(req:any, file:any, callback:any) {
+  destination: function (req: any, file: any, callback: any) {
     callback(null, __dirsource + "/files");
   },
-  filename: function(req: any, file:any, callback:any) {
+  filename: function (req: any, file: any, callback: any) {
     callback(null, file.originalname);
-  }
-})
-var upload = multer({storage: storage});
+  },
+});
+var upload = multer({ storage: storage });
 
 app.set("trust proxy", true);
 app.use(helmet());
 app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
-  const corsWhitelist = ["https://localhost:7000"];
-  if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+  const corsWhitelist = ["http://localhost:7000"];
+  if (corsWhitelist.indexOf(req.headers.origin) != -1) {
+    console.log(1)
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -49,8 +50,12 @@ app.use((req: any, res: any, next: NextFunction) => {
       "Authorization"
     );
     res.setHeader("Access-Control-Allow-Credentials", true);
+    next();
   }
-  next();
+  else{
+    return res.status(500).json("Server not found");
+  }
+  
 }, cors({ maxAge: 84600 }));
 app.use((req, res, next) => {
   interceptor(req, res, next);
@@ -59,13 +64,11 @@ app.use((req, res, next) => {
 app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
 app.use(bodyParser.json({ limit: "50000mb" }));
 app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
-app.use(upload.array("files")); 
-app.use(express.static('public'));
+app.use(upload.array("files"));
+app.use(express.static("public"));
 
 routes.animalRoutes(app);
 seq.connectDB();
-
-
 
 var privateKey = fs.readFileSync(
   __dirname + "/certificate/selfsigned.key",
@@ -86,7 +89,6 @@ var options = {
 // https.createServer(options, app).listen(port, function () {
 //   console.log(`Domain: ${process.env.ROOT_DOMAIN}: ${port}`);
 // });
-
 
 app.listen(port, () => {
   console.log(`Domain: ${process.env.ROOT_DOMAIN}: ${port}`);
