@@ -1,12 +1,1 @@
-[2023-03-28T16:27:31.759] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:27:53.925] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:29:15.688] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:35:33.478] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:37:01.866] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:37:37.967] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:38:22.317] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:38:35.187] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:38:45.184] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:39:17.614] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:45:07.261] [FATAL] POST - Host: localhost:3000, path: /api/generate
-[2023-03-28T16:45:40.880] [FATAL] POST - Host: localhost:3000, path: /api/generate
+[2023-03-28T17:17:43.744] [FATAL] POST - Remote: http://localhost:7000, path: /api/generate
