@@ -14,16 +14,6 @@ export const findAll = async (req: Request, res: Response) => {
 };
 
 
-export const file = async (req: any, res: Response) => {
-  console.log(req.files)
-  // let result = await service.findAll();
-  console.log(req.session.page_views)
-  return res.status(200).json({
-    Success: true
-  });
-};
-
-
 export const findById = async (req: Request, res: Response) => {
   let id = req.params["id"];
   let result:catWithId = await service.findById(id);

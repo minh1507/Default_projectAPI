@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
     callback(null, __dirsource + "/files");
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, file.originalname);
+    callback(null, Buffer.from(file.originalname, 'latin1').toString('utf8'));
   },
 });
 

@@ -5,3 +5,5 @@
 [2023-03-27T20:14:21.965] [FATAL] POST - Host: localhost:3000, path: /api/cat/file
 [2023-03-27T20:14:26.822] [FATAL] POST - Host: localhost:3000, path: /api/cat/file
 [2023-03-27T20:14:53.124] [FATAL] POST - Host: localhost:3000, path: /api/cat/file
+[2023-03-27T20:52:56.376] [FATAL] POST - Host: localhost:3000, path: /api/cat/file
+[2023-03-28T11:21:24.962] [FATAL] POST - Host: localhost:3000, path: /api/file/create
