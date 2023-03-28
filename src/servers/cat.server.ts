@@ -41,7 +41,6 @@ app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
   const corsWhitelist = ["http://localhost:7000"];
   if (corsWhitelist.indexOf(req.headers.origin) != -1) {
-    console.log(1);
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
     res.setHeader(
       "Access-Control-Allow-Methods",
