@@ -5,6 +5,10 @@
 //build project\
 npm run build
 
+//docker
+docker run --network=host -dp 3000:3000 start
+mysql port 3306
+
 //database\
 config database properties in .env file\
 config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect\
