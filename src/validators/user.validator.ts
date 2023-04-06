@@ -1,7 +1,7 @@
 import { user, userWithRefresh } from "../models/user.interface";
 
 export const formData = (data: user) => {
-  if (data.username && data.password && data.username.toLowerCase()!=data.password.toLowerCase() && data.type) {
+  if (data.username && data.password && data.username.toLowerCase()!=data.password.toLowerCase()) {
     return true;
   }
   return false;

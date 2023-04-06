@@ -12,6 +12,19 @@ export const findAll = async () => {
   });
 };
 
+export const findPath = async () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const data:catWithId = await Cat.findAll({
+        attributes : ["id"],
+      });
+      resolve(data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
 export const findById = async (id: string) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -23,10 +36,19 @@ export const findById = async (id: string) => {
   });
 };
 
-export const create = async (data: cat) => {
+export const create = async (name: any, age: any, fileName: any) => {
   return new Promise(async (resolve, reject) => {
     try {
-      await Cat.create({...data})
+      let data = {
+        name: name,
+        age: age,
+        fileUrl: "/static/png/" + fileName
+      }
+      await Cat.create({
+        name: name,
+        age: age,
+        fileUrl: "/static/png/" + fileName
+      })
       resolve(data);
     } catch (error) {
       reject(error);

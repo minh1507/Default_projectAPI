@@ -3,6 +3,8 @@ import { user, userWithId, userWithRefresh } from "../models/user.interface";
 import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
 import { User } from "../entities/user.entities.ts";
 import message from "../common/message/message.common.ts";
+import { Role } from "../entities/role.entities.ts";
+import { Sequelize } from "sequelize-typescript";
 
 import jwt from "jsonwebtoken";
 
@@ -32,8 +34,18 @@ export const login = async (data: user) => {
   return new Promise(async (resolve, reject) => {
     try {
     
-      const record: userWithId = await User.findOne({
+      const record: any = await User.findOne({
         where: { username: data.username },
+        include: [
+          {
+            model: Role,
+            attributes: [],
+            required: true
+          },
+        ],
+        attributes: ["username", "password", [Sequelize.col("role.name"), "role"], "accessToken", "refreshToken"],
+        // plain: true,
+        raw: true
       });
 
       if (record && record.refreshToken) {
@@ -41,6 +53,7 @@ export const login = async (data: user) => {
           username: record.username,
         };
         let check = compareSync(data.password, record.password);
+        newData.role = record.role;
 
         if (check) {
           if (isTokenExpired(record.refreshToken)) {
@@ -123,9 +136,6 @@ export const login = async (data: user) => {
         }
         resolve({ errCode: 1 });
       }
-
-
-      console.log(data)
 
       resolve({errCode: 2, mes: message.ACCOUNT_NOT_FOUND });
     } catch (error) {

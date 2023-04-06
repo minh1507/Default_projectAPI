@@ -26,7 +26,37 @@ export const app: Express = express();
 
 const storage = multer.diskStorage({
   destination: function (req: any, file: any, callback: any) {
-    callback(null, __dirsource + "/files");
+    console.log(file)
+    if(file.mimetype == "image/png"){
+      callback(null, __dirsource + "/files" + "/png");
+    }
+    if(file.mimetype == "application/zip" || file.mimetype == "application/x-7z-compressed"){
+      callback(null, __dirsource + "/files" + "/zip");
+    }
+    if(file.mimetype == "video/mp4"){
+      callback(null, __dirsource + "/files" + "/mp4");
+    }
+    if(file.mimetype == "application/vnd.rar"){
+      callback(null, __dirsource + "/files" + "/rar");
+    }
+    if(file.mimetype == "application/pdf"){
+      callback(null, __dirsource + "/files" + "/pdf");
+    }
+    if(file.mimetype == "image/jpeg"){
+      callback(null, __dirsource + "/files" + "/jpg");
+    }
+    if(file.mimetype == "image/webp"){
+      callback(null, __dirsource + "/files" + "/webp");
+    }
+    if(file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.mimetype == "application/vnd.ms-excel"){
+      callback(null, __dirsource + "/files" + "/excel");
+    }
+    if(file.mimetype == "application/msword" || file.mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
+      callback(null, __dirsource + "/files" + "/word");
+    }
+    if(file.mimetype == "application/vnd.ms-powerpoint" || file.mimetype == "application/vnd.openxmlformats-officedocument.presentationml.presentation"){
+      callback(null, __dirsource + "/files" + "/powerpoint");
+    }
   },
   filename: function (req: any, file: any, callback: any) {
     callback(null, Buffer.from(file.originalname, 'latin1').toString('utf8'));
@@ -34,28 +64,32 @@ const storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
+app.use("/static", express.static(__dirsource + '/files'));
 
 app.set("trust proxy", true);
 app.use(helmet());
 app.use(cors());
 app.use((req: any, res: any, next: NextFunction) => {
-  const corsWhitelist = ["http://localhost:7000"];
-  if (corsWhitelist.indexOf(req.headers.origin) != -1) {
-    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "Content-Type",
-      "Authorization"
-    );
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    next();
-  } else {
-    return res.status(500).json("Server not found");
-  }
+  
+  // const corsWhitelist = ["http://localhost:7000", "http://localhost:3000"];
+  // console.log(req.headers)
+  // if (corsWhitelist.indexOf(req.headers.origin) != -1) {
+  //   res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+  //   res.setHeader(
+  //     "Access-Control-Allow-Methods",
+  //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  //   );
+  //   res.setHeader(
+  //     "Access-Control-Allow-Methods",
+  //     "Content-Type",
+  //     "Authorization"
+  //   );
+  //   res.setHeader("Access-Control-Allow-Credentials", true);
+  //   next();
+  // } else {
+  //   return res.status(500).json("Server not found");
+  // }
+  next()
 }, cors({ maxAge: 84600 }));
 app.use((req, res, next) => {
   interceptor(req, res, next);

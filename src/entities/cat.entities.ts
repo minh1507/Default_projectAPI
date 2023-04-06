@@ -4,6 +4,7 @@ import { Optional } from 'sequelize';
 interface CatAttributes {
     id: number,
     name: string;
+    fileUrl: string;
     age: number;
   }
   interface CatCreationAttributes extends Optional<CatAttributes, 'id'> {}
@@ -25,4 +26,10 @@ export class Cat extends Model<CatAttributes, CatCreationAttributes>{
         allowNull: true
     })
     age!: string;
+
+    @Column({
+        type: DataType.INTEGER,
+        allowNull: true
+    })
+    fileUrl!: string
 }

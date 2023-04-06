@@ -6,7 +6,7 @@ let router = express.Router();
 
 let authRoute = (app: any) => {
   router.post("/register", rate.auth, register);
-  router.post("/login", rate.auth, login);
+  router.post("/login", login);
   router.post("/refresh", rate.auth, refresh);
   return app.use("/api/auth", rate.auth, router);
 };

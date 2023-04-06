@@ -9,6 +9,7 @@ module.exports = {
       },
       name: Sequelize.STRING,
       age: Sequelize.INTEGER,
+      fileUrl: Sequelize.STRING
     });
   },
   down: async (queryInterface, Sequelize) => {
