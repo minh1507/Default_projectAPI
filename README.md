@@ -112,6 +112,35 @@ To run this project, you will need to add the following environment variables to
 `PRIVATE_TOKEN`
 `SECRET_TOKEN`
 
+
+## Roadmap
+
+- Learn js -> ts
+
+- Learn sql or nosql
+
+- Cookie, Session
+
+- Authentication, authorization
+
+- Rest API
+
+- Learn express, handle js, ts configuration
+
+- Cache
+
+- Handle file (img resize, xlsx import)
+
+- Purchase: momo, viettelpay, ...
+
+- Design pattern
+
+- Dsa
+
+- Prefer next level Nestjs, asp.net, java spring boot
+
++ Its all basic for you to learn Be, good luck
+
 ## Authors
 
 - [@DuongDucAnh](https://www.github.com/octokatherine)
