@@ -44,3 +44,25 @@ Hi, I'm DuongDucAnh! 👋, I'm a fullstack developer. This is the first default 
 - Service: business logic handling
 - Test: testing
 - Validators: validation rules
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`ANIMAL_PORT`
+
+`ROOT_DOMAIN`
+
+`DB_HOST`
+`DB_USER`
+`DB_PASSWORD`
+`DB_NAME`
+`DB_TIMEZONE`
+
+`PRIVATE_TOKEN`
+`SECRET_TOKEN`
+
+
+## Badges
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
