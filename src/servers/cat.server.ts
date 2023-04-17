@@ -26,7 +26,6 @@ export const app: Express = express();
 
 const storage = multer.diskStorage({
   destination: function (req: any, file: any, callback: any) {
-    console.log(file)
     if(file.mimetype == "image/png"){
       callback(null, __dirsource + "/files" + "/png");
     }

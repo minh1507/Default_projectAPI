@@ -7,9 +7,6 @@ const __dirname = path.dirname(__filename);
 const __dirsource = path.join(__dirname, "..", "files");
 
 export const file = async (req: any, res: Response) => {
-  console.log(req.files);
-  // let result = await service.findAll();
-  console.log(req.session.page_views);
   return res.status(200).json({
     Success: true,
   });
