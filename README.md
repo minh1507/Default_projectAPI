@@ -28,35 +28,33 @@ Install modules
   npm install
 ```
 
-## Run script
+## Run script database
 
-Database
+Config database properties in .env file
+Config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect
+
+Migrate command
 
 ```bash
-    config database properties in .env file
-    config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect
-    - migrate command: npm run migrate
-    - create new migration: npm run new-migration (name)
-    - seed command: npm run seed
-    - create new seed: npm run new-seed (name)
+    npm run migrate
 ```
 
-Go to the project directory
+Create new migration
 
 ```bash
-  cd my-project
+  npm run new-migration (name)
 ```
 
-Install dependencies
+Seed command
 
 ```bash
-  npm install
+  npm run seed
 ```
 
-Start the server
+Create new seed
 
 ```bash
-  npm run start
+  npm run new-seed (name)
 ```
 
 ## Structure
