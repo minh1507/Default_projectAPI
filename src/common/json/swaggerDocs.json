@@ -59,6 +59,9 @@
         },
         "password": {
           "type": "string"
+        },
+        "type":{
+          "type": "number"
         }
       }
     },

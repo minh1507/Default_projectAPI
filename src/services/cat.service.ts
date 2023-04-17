@@ -4,7 +4,7 @@ import { Cat } from "../entities/cat.entities.ts";
 export const findAll = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data:catWithId = await Cat.findAll();
+      const data = await Cat.findAll();
       resolve(data);
     } catch (error) {
       reject(error);
@@ -15,7 +15,7 @@ export const findAll = async () => {
 export const findPath = async () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data:catWithId = await Cat.findAll({
+      const data = await Cat.findAll({
         attributes : ["id"],
       });
       resolve(data);
@@ -28,7 +28,7 @@ export const findPath = async () => {
 export const findById = async (id: string) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const data:catWithId = await Cat.findOne({where: {id:id}})
+      const data = await Cat.findOne({where: {id:id}})
       resolve(data);
     } catch (error) {
       reject(error);
@@ -72,7 +72,7 @@ export const deleteById= async (id: string) => {
   });
 };
 
-export const update = async (id: number, data: cat) => {
+export const update = async (id: any, data: cat) => {
   return new Promise(async (resolve, reject) => {
     try {
       await Cat.update(data, {where: {id: id}})

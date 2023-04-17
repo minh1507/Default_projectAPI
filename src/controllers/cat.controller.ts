@@ -16,7 +16,7 @@ export const findPath = async (req: Request, res: Response) => {
 
 export const findById = async (req: Request, res: Response) => {
   let id = req.params["id"];
-  let result: catWithId = await service.findById(id);
+  let result: any = await service.findById(id);
   return res.status(200).json(result);
 };
 

@@ -19,7 +19,9 @@ export const register = async (data: user) => {
         await User.create({
           username: data.username,
           password: hashPassword,
-          roleId: data.type
+          roleId: data.type,
+          accessToken: "",
+          refreshToken: "",
         });
         resolve({ mes: message.CREATE_ACCOUNT_SUCCESS });
       }
@@ -33,19 +35,24 @@ export const register = async (data: user) => {
 export const login = async (data: user) => {
   return new Promise(async (resolve, reject) => {
     try {
-    
       const record: any = await User.findOne({
         where: { username: data.username },
         include: [
           {
             model: Role,
             attributes: [],
-            required: true
+            required: true,
           },
         ],
-        attributes: ["username", "password", [Sequelize.col("role.name"), "role"], "accessToken", "refreshToken"],
+        attributes: [
+          "username",
+          "password",
+          [Sequelize.col("role.name"), "role"],
+          "accessToken",
+          "refreshToken",
+        ],
         // plain: true,
-        raw: true
+        raw: true,
       });
 
       if (record && record.refreshToken) {
@@ -137,7 +144,7 @@ export const login = async (data: user) => {
         resolve({ errCode: 1 });
       }
 
-      resolve({errCode: 2, mes: message.ACCOUNT_NOT_FOUND });
+      resolve({ errCode: 2, mes: message.ACCOUNT_NOT_FOUND });
     } catch (error) {
       reject(error);
     }
@@ -148,7 +155,7 @@ export const refreshTK = async (data: userWithRefresh) => {
   return new Promise(async (resolve, reject) => {
     try {
       const record = await User.findOne({ where: { username: data.username } });
-      
+
       if (
         record &&
         record.username == data.username &&
@@ -156,7 +163,7 @@ export const refreshTK = async (data: userWithRefresh) => {
       ) {
         const newData = {
           username: record.username,
-        }
+        };
         if (!isTokenExpired(record.refreshToken)) {
           let newAccessToken = jwt.sign(
             {
@@ -194,12 +201,16 @@ export const refreshTK = async (data: userWithRefresh) => {
           await User.update(
             {
               accessToken: newAccessToken,
-              refreshToken: newRefreshToken
+              refreshToken: newRefreshToken,
             },
             { where: { username: record.username } }
           );
           resolve({
-            data: { username: record.username, accessToken: newAccessToken, refreshToken: newRefreshToken },
+            data: {
+              username: record.username,
+              accessToken: newAccessToken,
+              refreshToken: newRefreshToken,
+            },
             errCode: 0,
           });
         }
@@ -210,4 +221,3 @@ export const refreshTK = async (data: userWithRefresh) => {
     }
   });
 };
-

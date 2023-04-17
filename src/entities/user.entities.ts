@@ -14,6 +14,8 @@ interface UserAttributes {
   username: string;
   password: string;
   roleId: number;
+  accessToken: string;
+  refreshToken: string;
 }
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 type RoleType = typeof Role;

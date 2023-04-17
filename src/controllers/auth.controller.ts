@@ -16,7 +16,7 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   let data:user=req.body;
   if(validator.formData(data)){
-    let result = await service.login(data);
+    let result:any = await service.login(data);
     if(!result.errCode){
       return res.status(200).json(result.data);
     }
@@ -31,7 +31,7 @@ export const login = async (req: Request, res: Response) => {
 export const refresh = async (req: Request, res: Response) => {
   let data: userWithRefresh = req.body;
   if(validator.refreshTK(data)){
-    let result = await service.refreshTK(data)
+    let result:any = await service.refreshTK(data)
     if(!result.errCode){
       return res.status(200).json(result.data);
     }
