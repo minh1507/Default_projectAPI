@@ -29,13 +29,13 @@ Install modules
 Parallel: if you want more server config in package.json
 
 ```bash
-    npm run dev
+  npm run dev
 ```
 
 Separate: if you want more server config in package.json
 
 ```bash
-    npm run serve
+  npm run serve
 ```
 
 ## Run script database
