@@ -115,7 +115,9 @@ To run this project, you will need to add the following environment variables to
 
 ## Roadmap
 
-- Learn js -> ts
+- Learn js -> ts (java, C#)
+
+- Dsa
 
 - Learn sql or nosql
 
@@ -134,8 +136,6 @@ To run this project, you will need to add the following environment variables to
 - Purchase: momo, viettelpay, ...
 
 - Design pattern
-
-- Dsa
 
 - Prefer next level Nestjs, asp.net, java spring boot
 
