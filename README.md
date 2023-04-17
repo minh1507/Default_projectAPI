@@ -46,7 +46,7 @@ Config type of database in /env/connect.database.ts and /env/database.cjs in pro
 Migrate command
 
 ```bash
-    npm run migrate
+  npm run migrate
 ```
 
 Create new migration
