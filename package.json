@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "rimraf ./build && tsc",
-    "animal-serve": "nodemon --watch src src/servers/cat.server.ts",
+    "serve": "nodemon --watch src src/main.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "new-migration": "npx sequelize-cli migration:generate --name $NAME",
     "new-seed": "npx sequelize-cli seed:generate --name $NAME",

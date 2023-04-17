@@ -1,138 +1,75 @@
-import express, { Express, NextFunction } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import https from "https";
 import bodyParser from "body-parser";
-import * as routes from "../routes/index.ts";
 import swaggerUi from "swagger-ui-express";
-import * as seq from "../config/connect.database.ts";
 import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
 import helmet from "helmet";
 import interceptor from "../middleware/inteceptor.middleware.ts";
-import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 import multer from "multer";
 import cookieParser from "cookie-parser";
-import session from "express-session";
 
-dotenv.config();
+import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const __dirsource = path.join(__dirname, "..");
-const port = process.env.ANIMAL_PORT;
-export const app: Express = express();
+import * as configMulter from "../middleware/multer.middleware.ts";
+import * as session from "../middleware/session.middleware.ts";
+import * as block from "../middleware/cors.middleware.ts";
+import * as seq from "../config/connect.database.ts";
+import * as routes from "../routes/index.ts";
 
-const storage = multer.diskStorage({
-  destination: function (req: any, file: any, callback: any) {
-    if(file.mimetype == "image/png"){
-      callback(null, __dirsource + "/files" + "/png");
-    }
-    if(file.mimetype == "application/zip" || file.mimetype == "application/x-7z-compressed"){
-      callback(null, __dirsource + "/files" + "/zip");
-    }
-    if(file.mimetype == "video/mp4"){
-      callback(null, __dirsource + "/files" + "/mp4");
-    }
-    if(file.mimetype == "application/vnd.rar"){
-      callback(null, __dirsource + "/files" + "/rar");
-    }
-    if(file.mimetype == "application/pdf"){
-      callback(null, __dirsource + "/files" + "/pdf");
-    }
-    if(file.mimetype == "image/jpeg"){
-      callback(null, __dirsource + "/files" + "/jpg");
-    }
-    if(file.mimetype == "image/webp"){
-      callback(null, __dirsource + "/files" + "/webp");
-    }
-    if(file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || file.mimetype == "application/vnd.ms-excel"){
-      callback(null, __dirsource + "/files" + "/excel");
-    }
-    if(file.mimetype == "application/msword" || file.mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"){
-      callback(null, __dirsource + "/files" + "/word");
-    }
-    if(file.mimetype == "application/vnd.ms-powerpoint" || file.mimetype == "application/vnd.openxmlformats-officedocument.presentationml.presentation"){
-      callback(null, __dirsource + "/files" + "/powerpoint");
-    }
-  },
-  filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, 'latin1').toString('utf8'));
-  },
-});
+export default class main {
+  private __filename = fileURLToPath(import.meta.url);
+  private __dirname = path.dirname(this.__filename);
+  private __dirsource = path.join(this.__dirname, "..");
+  private port = process.env.ANIMAL_PORT;
+  private app: Express = express();
+  private upload = multer({ storage: configMulter.storage });
 
-var upload = multer({ storage: storage });
-app.use("/static", express.static(__dirsource + '/files'));
+  middleware(app: Express) {
+    app.use("/static", express.static(this.__dirsource + "/files"));
+    app.set("trust proxy", true);
+    app.use(helmet());
+    app.use(cors());
+    app.use((req: Request, res: Response, next: NextFunction) => {
+      block.blockCors(req, res, next);
+    }, cors({ maxAge: 84600 }));
+    app.use((req: Request, res: Response, next: NextFunction) => {
+      interceptor(req, res, next);
+    });
+    app.use(cookieParser());
+    app.use(session.sessions);
+    app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
+    app.use(bodyParser.json({ limit: "50000mb" }));
+    app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
+    app.use(this.upload.array("files"));
+    app.use(express.static("public"));
+  }
 
-app.set("trust proxy", true);
-app.use(helmet());
-app.use(cors());
-app.use((req: any, res: any, next: NextFunction) => {
-  
-  // const corsWhitelist = ["http://localhost:7000", "http://localhost:3000"];
-  // console.log(req.headers)
-  // if (corsWhitelist.indexOf(req.headers.origin) != -1) {
-  //   res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
-  //   res.setHeader(
-  //     "Access-Control-Allow-Methods",
-  //     "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  //   );
-  //   res.setHeader(
-  //     "Access-Control-Allow-Methods",
-  //     "Content-Type",
-  //     "Authorization"
-  //   );
-  //   res.setHeader("Access-Control-Allow-Credentials", true);
-  //   next();
-  // } else {
-  //   return res.status(500).json("Server not found");
-  // }
-  next()
-}, cors({ maxAge: 84600 }));
-app.use((req, res, next) => {
-  interceptor(req, res, next);
-});
-app.use(cookieParser());
-app.use(
-  session({
-    secret: process.env.PRIVATE_TOKEN,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      maxAge: 1000 * 60 * 100,
-    },
-  })
-);
-app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
-app.use(bodyParser.json({ limit: "50000mb" }));
-app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
-app.use(upload.array("files"));
-app.use(express.static("public"));
+  configuration(app:Express){
+    routes.animalRoutes(app);
+    seq.connectDB();
+  }
 
-routes.animalRoutes(app);
-seq.connectDB();
+  broad(app: Express){
+    app.listen(this.port, () => {
+      console.log(`Domain: ${process.env.ROOT_DOMAIN}:${this.port}`);
+    });
+  }
 
-var privateKey = fs.readFileSync(
-  __dirname + "/certificate/selfsigned.key",
-  "utf8"
-);
-var certificate = fs.readFileSync(
-  __dirname + "/certificate/selfsigned.crt",
-  "utf8"
-);
+  other(){
+    dotenv.config();
+  }
 
-var options = {
-  key: privateKey,
-  cert: certificate,
-  requestCert: false,
-  rejectUnauthorized: false,
-};
+  run() {
+    const app:Express = this.app;
+    this.other()
+    this.middleware(app);
+    this.configuration(app)
+    this.broad(app)
+  }
+}
 
-// https.createServer(options, app).listen(port, function () {
-//   console.log(`Domain: ${process.env.ROOT_DOMAIN}: ${port}`);
-// });
 
-app.listen(port, () => {
-  console.log(`Domain: ${process.env.ROOT_DOMAIN}: ${port}`);
-});
+
+
