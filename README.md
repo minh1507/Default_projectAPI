@@ -23,7 +23,6 @@ ROOT_DOMAIN:PORT/api
 //Src
 
 //no copyright
-
 author: Duong Duc Anh\
 gmail: duongdoican@gmail.com\
 facebook: https://www.facebook.com/ST.LGZ/
