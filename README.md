@@ -71,10 +71,16 @@ Create new seed
 
 ROOT_DOMAIN:PORT/api
 
+#### Root domain
+
+```http
+  /api
+```
+
 #### Swagger
 
 ```http
-  GET /apis
+  /apis
 ```
 
 ## Structure
