@@ -24,8 +24,8 @@ ROOT_DOMAIN:PORT/api
 
 - [@DuongDucAnh](https://www.github.com/octokatherine)
 
-# Hi, I'm DuongDucAnh! 👋, I'm a fullstack developer. This is the first default project I built in college. It free, so you can use it for learning. But not for business. Thank you all
-
+## 🚀 About Me
+Hi, I'm DuongDucAnh! 👋, I'm a fullstack developer. This is the first default project I built in college. It free, so you can use it for learning. But not for business. Thank you all
 
 ## Structure
 
