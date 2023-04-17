@@ -73,13 +73,13 @@ ROOT_DOMAIN:PORT/api
 
 #### Root domain
 
-```http
+```bash
   /api
 ```
 
 #### Swagger
 
-```http
+```bash
   /apis
 ```
 
