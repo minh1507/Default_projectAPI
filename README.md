@@ -30,7 +30,7 @@ Install modules
 
 ## Run script database
 
-Config database properties in .env file
+Config database properties in .env file\
 Config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect
 
 Migrate command
