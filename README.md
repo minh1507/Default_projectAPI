@@ -69,8 +69,6 @@ Create new seed
 
 ## API Reference
 
-ROOT_DOMAIN:PORT/api
-
 #### Root domain
 
 ```bash
