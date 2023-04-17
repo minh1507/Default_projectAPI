@@ -12,10 +12,10 @@ mysql port 3306
 //Database\
 config database properties in .env file\
 config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect\
-    - migrate command: npm run migrate\
-    - create new migration: npm run new-migration (name)\
-    - seed command: npm run seed\
-    - create new seed: npm run new-seed (name)
+ - migrate command: npm run migrate\
+ - create new migration: npm run new-migration (name)\
+ - seed command: npm run seed\
+ - create new seed: npm run new-seed (name)
 
 //Swagger api\
 ROOT_DOMAIN:PORT/api
@@ -26,6 +26,37 @@ Install modules
 
 ```bash
   npm install
+```
+
+## Run script
+
+Database
+
+```bash
+    config database properties in .env file
+    config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect
+    - migrate command: npm run migrate
+    - create new migration: npm run new-migration (name)
+    - seed command: npm run seed
+    - create new seed: npm run new-seed (name)
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
 ```
 
 ## Structure
@@ -68,9 +99,9 @@ To run this project, you will need to add the following environment variables to
 - [@DuongDucAnh](https://www.github.com/octokatherine)
 
 ## 🚀 About Me
+
 Hi, I'm DuongDucAnh! 👋, I'm a fullstack developer. This is the first default project I built in college. It free, so you can use it for learning. But not for business. Thank you all
 
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-
