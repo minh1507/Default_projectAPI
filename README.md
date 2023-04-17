@@ -20,7 +20,9 @@ config type of database in /env/connect.database.ts and /env/database.cjs in pro
 //swagger api\
 ROOT_DOMAIN:PORT/api
 
-//no copyright\
+//Src
+
+//no copyright
 author: Duong Duc Anh\
 gmail: duongdoican@gmail.com\
 facebook: https://www.facebook.com/ST.LGZ/
