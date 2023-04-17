@@ -61,11 +61,17 @@ Create new seed
 
 ## API Reference
 
+ROOT_DOMAIN:PORT/api
+
 #### Swagger
 
 ```http
   GET /apis
 ```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
 
 ## Structure
 
