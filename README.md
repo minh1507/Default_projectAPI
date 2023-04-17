@@ -20,6 +20,14 @@ config type of database in /env/connect.database.ts and /env/database.cjs in pro
 //Swagger api\
 ROOT_DOMAIN:PORT/api
 
+## Installation
+
+Install modules
+
+```bash
+  npm install
+```
+    
 ## Authors
 
 - [@DuongDucAnh](https://www.github.com/octokatherine)
