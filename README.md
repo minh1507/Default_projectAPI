@@ -6,7 +6,7 @@ docker run --network=host -dp 3000:3000 start
 mysql port 3306
 
 //Swagger api\
-ROOT_DOMAIN:PORT/api
+
 
 ## Installation
 
@@ -59,6 +59,16 @@ Create new seed
   npm run new-seed (name)
 ```
 
+## API Reference
+
+#### Swagger
+
+ROOT_DOMAIN:PORT/api
+
+```http
+  GET /apis
+```
+
 ## Structure
 
 - Common: static function, enum, static class, json
@@ -100,7 +110,7 @@ To run this project, you will need to add the following environment variables to
 
 ## 🚀 About Me
 
-Hi, I'm Dương Đức Anh! 👋, I'm a fullstack developer. This is the first default project I built in college. It free, so you can use it for learning. But not for business. Thank you all
+Hi, I'm Dương Đức Anh! 👋, I'm a fullstack developer. This is the first default project I built in college. Its free, so you can use it for learning. But not for business. Thank you all!
 
 ## Badges
 
