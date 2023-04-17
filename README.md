@@ -28,10 +28,6 @@ Install modules
   npm install
 ```
     
-## Authors
-
-- [@DuongDucAnh](https://www.github.com/octokatherine)
-
 ## 🚀 About Me
 Hi, I'm DuongDucAnh! 👋, I'm a fullstack developer. This is the first default project I built in college. It free, so you can use it for learning. But not for business. Thank you all
 
@@ -70,7 +66,11 @@ To run this project, you will need to add the following environment variables to
 `PRIVATE_TOKEN`
 `SECRET_TOKEN`
 
+## Authors
+
+- [@DuongDucAnh](https://www.github.com/octokatherine)
 
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
