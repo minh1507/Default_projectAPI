@@ -1,19 +1,27 @@
-//Build project\
-npm run build
-
-//Docker
-docker run --network=host -dp 3000:3000 start
-mysql port 3306
-
-//Swagger api\
-
-
 ## Installation
 
 Install modules
 
 ```bash
   npm install
+```
+
+## Docker
+
+```bash
+  docker run --network=host -dp 3000:3000 start
+```
+
+## Build project
+
+```bash
+  npm run build
+```
+
+## Mysql
+
+```bash
+  port 3306
 ```
 
 ## Run project
@@ -68,10 +76,6 @@ ROOT_DOMAIN:PORT/api
 ```http
   GET /apis
 ```
-
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
 
 ## Structure
 
