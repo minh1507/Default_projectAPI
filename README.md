@@ -149,7 +149,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Authors
 
-- [@DuongDucAnh](https://www.github.com/octokatherine)
+- [@minh1507](https://www.github.com/octokatherine)
 
 ## 🚀 About Me
 
