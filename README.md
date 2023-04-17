@@ -127,7 +127,7 @@ To run this project, you will need to add the following environment variables to
 
 - Rest API
 
-- Learn express, handle js, ts configuration
+- MVC, 3 layer
 
 - Cache
 
