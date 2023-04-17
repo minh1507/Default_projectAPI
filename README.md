@@ -137,9 +137,15 @@ To run this project, you will need to add the following environment variables to
 
 - Design pattern
 
+- Microservice
+
+- CI/CD
+
+- Docker, Git, library
+
 - Prefer next level Nestjs, asp.net, java spring boot
 
-=> Its all basic for you to learn Be, good luck
+=> Its all basic for you to learn Be, good luck!
 
 ## Authors
 
