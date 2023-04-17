@@ -1,21 +1,9 @@
-//Run project\
-parallel: npm run dev (if you want more server config in package.json)\
-separate: npm run animal-serve (or more server)
-
 //Build project\
 npm run build
 
 //Docker
 docker run --network=host -dp 3000:3000 start
 mysql port 3306
-
-//Database\
-config database properties in .env file\
-config type of database in /env/connect.database.ts and /env/database.cjs in property name dialect\
- - migrate command: npm run migrate\
- - create new migration: npm run new-migration (name)\
- - seed command: npm run seed\
- - create new seed: npm run new-seed (name)
 
 //Swagger api\
 ROOT_DOMAIN:PORT/api
@@ -26,6 +14,20 @@ Install modules
 
 ```bash
   npm install
+```
+
+## Run project
+
+Parallel: if you want more server config in package.json
+
+```bash
+    npm run dev
+```
+
+Separate: if you want more server config in package.json
+
+```bash
+    npm run animal-serve (or more server)
 ```
 
 ## Run script database
