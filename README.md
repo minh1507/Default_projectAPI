@@ -117,7 +117,7 @@ To run this project, you will need to add the following environment variables to
 
 - Dsa
 
-- Learn sql or nosql
+- Prefer sql (nosql is an optional)
 
 - Cookie, Session
 
