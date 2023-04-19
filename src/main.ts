@@ -1,4 +1,4 @@
-import main from "./server/main.server.ts"
+import microService from "./servers/index.server.ts";
 
-const server = new main();
+const server = new microService();
 server.run();
