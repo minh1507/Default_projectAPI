@@ -2,7 +2,7 @@
   "name": "default_project",
   "version": "1.0.0",
   "description": "",
-  "main": "src/servers/index.js",
+  "main": "src/server/main.server.ts",
   "type": "module",
   "scripts": {
     "build": "rimraf ./build && tsc",
