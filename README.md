@@ -18,12 +18,6 @@ Install modules
   npm run build
 ```
 
-## Mysql
-
-```bash
-  port 3306
-```
-
 ## Run project
 
 Parallel: if you want more server config in package.json
