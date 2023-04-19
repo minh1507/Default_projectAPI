@@ -151,6 +151,12 @@ To run this project, you will need to add the following environment variables to
 
 => Its all basic for you to learn Be, good luck!
 
+## Notification
+
+If you are not knowledgeable enough to work on this project. 
+Please redirect to this link: https://github.com/minh1507/Skillset.git. 
+To study before practice.
+
 ## Authors
 
 - [@DuongDucAnh](https://github.com/minh1507)
