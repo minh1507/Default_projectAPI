@@ -1,12 +1,13 @@
-import { Dialect } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import { Cat } from "../entities/cat.entities.ts";
 import { User } from "../entities/user.entities.ts";
 import { Role } from "../entities/role.entities.ts";
 
 const host = process.env.DB_HOST;
+const database = process.env.DB_NAME;
+const username = process.env.DB_USER;
 
-export const sequelize = new Sequelize("Cat", "root", undefined, {
+export const sequelize = new Sequelize(database as string, username as string, undefined, {
   host: host,
   dialect: "mysql",
   username: process.env.DB_USER,
