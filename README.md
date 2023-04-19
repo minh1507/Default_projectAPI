@@ -113,7 +113,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Roadmap
 
-- Learn js -> ts (java, C#)
+- Prefer java, C# (C++, js -> typescript are an optional)
 
 - Dsa
 
@@ -141,7 +141,7 @@ To run this project, you will need to add the following environment variables to
 
 - Docker, Git, library
 
-- Prefer next level Nestjs, asp.net, java spring boot
+- Prefer next level Nestjs, asp.net, java spring
 
 => Its all basic for you to learn Be, good luck!
 
