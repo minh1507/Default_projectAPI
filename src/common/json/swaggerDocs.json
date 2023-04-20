@@ -10,7 +10,7 @@
       }
   },
   "host": "localhost:4000/api",
-  "schemes": ["https", "http"],
+  "schemes": ["http", "https"],
   "tags": [
     {
       "name": "Cats",
@@ -110,12 +110,28 @@
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "description": "Cat",
-            "schema": {
-              "$ref": "#/definitions/Cat"
-            }
+            "in": "formData",
+            "name": "name",
+            "description": "Name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "age",
+            "description": "Age",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "fileName",
+            "description": "File Name",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "files",
+            "description": "File",
+            "type": "file"
           }
         ],
         "produces": ["application/json"],
