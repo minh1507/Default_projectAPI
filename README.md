@@ -127,7 +127,7 @@ To run this project, you will need to add the following environment variables to
 
 - MVC, 3 layer
 
-- Cache
+- Caching
 
 - Handle file (img resize, xlsx import)
 
