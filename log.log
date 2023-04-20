@@ -56,3 +56,14 @@
 [2023-04-20T15:54:49.999] [FATAL] POST - Remote: http://localhost:4000, path: /api/auth/login
 [2023-04-20T15:55:36.190] [FATAL] POST - Remote: http://localhost:4000, path: /api/cat
 [2023-04-20T15:55:41.945] [FATAL] GET - Remote: undefined, path: /api/cat
+[2023-04-20T18:45:22.583] [FATAL] POST - Remote: undefined, path: /api/auth/login
+[2023-04-20T18:45:24.572] [FATAL] GET - Remote: undefined, path: /api/cat
+[2023-04-20T18:45:33.340] [FATAL] POST - Remote: http://localhost:3000, path: /api/cat
+[2023-04-20T18:45:33.431] [FATAL] GET - Remote: http://localhost:3000, path: /api/cat
+[2023-04-20T18:45:36.190] [FATAL] GET - Remote: undefined, path: /api/cat/path
+[2023-04-20T18:45:36.210] [FATAL] GET - Remote: undefined, path: /api/cat/92
+[2023-04-20T18:45:38.306] [FATAL] GET - Remote: undefined, path: /api/cat
+[2023-04-20T18:45:49.006] [FATAL] POST - Remote: http://localhost:3000, path: /api/cat
+[2023-04-20T18:45:49.101] [FATAL] GET - Remote: http://localhost:3000, path: /api/cat
+[2023-04-20T18:45:50.472] [FATAL] GET - Remote: undefined, path: /api/cat/93
+[2023-04-20T18:45:51.104] [FATAL] GET - Remote: undefined, path: /api/cat/path
