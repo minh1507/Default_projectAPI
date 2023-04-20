@@ -7,12 +7,10 @@ import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "jso
 import helmet from "helmet";
 import interceptor from "../middleware/inteceptor.middleware.ts";
 import path from "path";
-import multer from "multer";
 import cookieParser from "cookie-parser";
 
 import { fileURLToPath } from "url";
 
-import * as configMulter from "../middleware/multer.middleware.ts";
 import * as session from "../middleware/session.middleware.ts";
 import * as block from "../middleware/cors.middleware.ts";
 import * as seq from "../config/connect.database.ts";
@@ -24,7 +22,6 @@ export default class main {
   private __dirsource = path.join(this.__dirname, "..");
   private port = process.env.ANIMAL_PORT;
   private app: Express = express();
-  private upload = multer({ storage: configMulter.storage });
 
   middleware(app: Express) {
     app.use("/static", express.static(this.__dirsource + "/files"));
@@ -42,7 +39,6 @@ export default class main {
     app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
     app.use(bodyParser.json({ limit: "50000mb" }));
     app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
-    app.use(this.upload.array("files"));
     app.use(express.static("public"));
   }
 
