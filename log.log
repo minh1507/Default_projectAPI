@@ -67,3 +67,9 @@
 [2023-04-20T18:45:49.101] [FATAL] GET - Remote: http://localhost:3000, path: /api/cat
 [2023-04-20T18:45:50.472] [FATAL] GET - Remote: undefined, path: /api/cat/93
 [2023-04-20T18:45:51.104] [FATAL] GET - Remote: undefined, path: /api/cat/path
+[2023-04-20T19:20:02.066] [FATAL] GET - Remote: undefined, path: /apis/
+[2023-04-20T19:20:02.139] [FATAL] GET - Remote: undefined, path: /apis/swagger-ui.css
+[2023-04-20T19:20:02.149] [FATAL] GET - Remote: undefined, path: /apis/swagger-ui-bundle.js
+[2023-04-20T19:20:02.176] [FATAL] GET - Remote: undefined, path: /apis/swagger-ui-standalone-preset.js
+[2023-04-20T19:20:02.177] [FATAL] GET - Remote: undefined, path: /apis/swagger-ui-init.js
+[2023-04-20T19:20:02.633] [FATAL] GET - Remote: undefined, path: /apis/favicon-32x32.png

@@ -13,7 +13,9 @@ export const png = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "image/png") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -27,7 +29,12 @@ export const zip = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (
+      file.mimetype == "application/zip" ||
+      file.mimetype == "application/x-7z-compressed"
+    ) {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -38,7 +45,9 @@ export const mp4 = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "video/mp4") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -49,7 +58,9 @@ export const rar = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "application/vnd.rar") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -60,7 +71,9 @@ export const pdf = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "application/pdf") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -71,7 +84,9 @@ export const jpg = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "image/jpeg") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -82,7 +97,9 @@ export const webp = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (file.mimetype == "image/webp") {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -97,7 +114,13 @@ export const xlsx = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (
+      file.mimetype ==
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+      file.mimetype == "application/vnd.ms-excel"
+    ) {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -112,7 +135,13 @@ export const docx = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (
+      file.mimetype == "application/msword" ||
+      file.mimetype ==
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ) {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
 
@@ -127,7 +156,12 @@ export const pptx = multer.diskStorage({
     }
   },
   filename: function (req: any, file: any, callback: any) {
-    callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    if (
+      file.mimetype == "application/vnd.ms-powerpoint" ||
+      file.mimetype ==
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    ) {
+      callback(null, Buffer.from(file.originalname, "latin1").toString("utf8"));
+    }
   },
 });
-
