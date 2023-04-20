@@ -14,7 +14,7 @@ import * as rate from "../middleware/rateLimit.middleware.ts";
 import * as configMulter from "../middleware/multer.middleware.ts";
 
 let router = express.Router();
-let upload = multer({ storage: configMulter.storage });
+let upload = multer({ storage: configMulter.png });
 
 let catRoute = (app: any) => {
   router.get("/",  findAll);
