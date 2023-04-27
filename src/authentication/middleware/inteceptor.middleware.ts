@@ -14,7 +14,6 @@ Log4js.configure({
 });
 
 const interceptor = (req: any, res: any, next: any) => {
-  console.log(__dirsource)
   const logger = Log4js.getLogger(req.method);
   if(countFileLines(__dirsource + "/logs/auth.log") == 1000)
   {
