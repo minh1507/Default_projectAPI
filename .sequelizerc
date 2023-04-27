@@ -2,8 +2,10 @@ var path = require('path')
 require("babel-register");
 
 module.exports = {
-  config: path.resolve('src/config', 'database.cjs'),
-  'models-path': path.resolve('src', 'entities'),
-  'seeders-path': path.resolve('src/db', 'seeders'),
-  'migrations-path': path.resolve('src/db', 'migrations'),
+  config: path.resolve('src/app1/config', 'database.cjs'),
+  'models-path': path.resolve('src/app1', 'entities'),
+  'seeders-path': path.resolve('src/app1/db', 'seeders'),
+  'migrations-path': path.resolve('src/app1/db', 'migrations'),
 }
+
+//update directory migrate before run script

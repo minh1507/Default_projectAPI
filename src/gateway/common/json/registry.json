@@ -1,0 +1,16 @@
+{
+    "passgate": "btaf",
+    "services":{
+        "app1": {
+            "apiName": "app1",
+            "port": 5000,
+            "url": "http://localhost:5000/api/"
+        },
+        "authenapp1":
+        {
+            "apiName": "authentication for app1",
+            "port": 3300,
+            "url": "http://localhost:3300/api/auth/"
+        }
+    }
+}

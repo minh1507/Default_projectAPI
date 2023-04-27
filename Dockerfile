@@ -4,3 +4,5 @@ WORKDIR /app
 COPY . .
 RUN npm install --force
 CMD npm run animal-serve
+
+#not update yet
