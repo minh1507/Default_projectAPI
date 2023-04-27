@@ -55,7 +55,6 @@ export const findById = async (req: Request, res: Response) => {
           },
         }
       );
-      console.log(result);
 
       return res.status(200).json(result.data);
     } else {
