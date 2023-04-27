@@ -8,6 +8,8 @@ import * as seq from "../config/connect.database.ts";
 
 import * as routes from "../routes/index.route.ts";
 
+import swaggerUi from "swagger-ui-express";
+import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
 
 export default class Microservice {
   private app: Express = express();
@@ -17,6 +19,7 @@ export default class Microservice {
     app.use(helmet());
     app.use(cors());
     app.use(cookieParser());
+    app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
     app.use(bodyParser.json({ limit: "50000mb" }));
     app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
   }

@@ -1,5 +1,4 @@
 import { isTokenExpired } from "./../validators/token.validator.ts";
-import { user, userWithId, userWithRefresh } from "../models/user.interface";
 import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
 import { User } from "../entities/user.entities.ts";
 import message from "../common/message/message.common.ts";
@@ -8,7 +7,7 @@ import { Sequelize } from "sequelize-typescript";
 
 import jwt from "jsonwebtoken";
 
-export const register = async (data: user) => {
+export const register = async (data: any) => {
   return new Promise(async (resolve, reject) => {
     try {
       const salt = genSaltSync(10);
@@ -32,7 +31,7 @@ export const register = async (data: user) => {
   });
 };
 
-export const login = async (data: user) => {
+export const login = async (data: any) => {
   return new Promise(async (resolve, reject) => {
     try {
       const record: any = await User.findOne({
@@ -151,7 +150,7 @@ export const login = async (data: user) => {
   });
 };
 
-export const refreshTK = async (data: userWithRefresh) => {
+export const refreshTK = async (data: any) => {
   return new Promise(async (resolve, reject) => {
     try {
       const record = await User.findOne({ where: { username: data.username } });

@@ -2,8 +2,7 @@ import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
-import swaggerUi from "swagger-ui-express";
-import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
+
 import helmet from "helmet";
 import interceptor from "../middleware/inteceptor.middleware.ts";
 import path from "path";
@@ -35,7 +34,6 @@ export default class main {
     });
     app.use(cookieParser());
     app.use(session.sessions);
-    app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
     app.use(bodyParser.json({ limit: "50000mb" }));
     app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
   }

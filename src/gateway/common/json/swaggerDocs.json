@@ -2,14 +2,14 @@
 {
   "swagger": "2.0",
   "info": {
-      "title": "Cat",
-      "version": "1.0.0",
+      "title": "Default project",
+      "version": "0.0.1",
       "description": "Cat API Documentation",
       "license": {
         "name": "MIT"
       }
   },
-  "host": "localhost:4000/api",
+  "host": "localhost:3200/api",
   "schemes": ["http", "https"],
   "tags": [
     {
@@ -65,6 +65,17 @@
         }
       }
     },
+    "AuthLogin": {
+      "type": "object",
+      "properties": {
+        "username":{
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
     "AuthRefreshToken": {
       "type": "object",
       "properties": {
@@ -87,7 +98,9 @@
     "/cat": {
       "get": {
         "tags": ["Cats"],
-        
+        "security": [
+          {"Bearer": []}
+        ],
         "summary": "Get all cats",
         "responses": {
           "200": {
@@ -155,7 +168,7 @@
             "name": "body",
             "description": "Login",
             "schema": {
-              "$ref": "#/definitions/Auth"
+              "$ref": "#/definitions/AuthLogin"
             }
           }
         ],
