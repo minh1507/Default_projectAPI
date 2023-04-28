@@ -1,8 +1,8 @@
 ## Version 2.0
 
-# New feature: Microservice, single db
+#### New feature: Microservice, single db
 
-# What's next in
+#### What's next in
 
 - v1?: Monolithic - beta version
 - v2?: Microservice, single db -> here <-
