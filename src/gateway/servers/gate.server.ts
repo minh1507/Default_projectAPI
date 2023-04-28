@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import * as seq from "../config/connect.database.ts";
+import * as block from "../middlewares/cors.middleware.ts";
 
 import * as routes from "../routes/index.route.ts";
 
@@ -13,13 +14,16 @@ import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "jso
 
 export default class Microservice {
   private app: Express = express();
+  private hostname: string = '0.0.0.0' 
 
   middleware(app: Express) {
-    app.set("trust proxy", true);
+    app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
     app.use(helmet());
     app.use(cors());
+    app.use((req: Request, res: Response, next: NextFunction) => {
+      block.blockCors(req, res, next);
+    }, cors({ maxAge: 84600 }));
     app.use(cookieParser());
-    app.use("/apis", swaggerUi.serve, swaggerUi.setup(swaggerJsDocUi));
     app.use(bodyParser.json({ limit: "50000mb" }));
     app.use(bodyParser.urlencoded({ limit: "50000mb", extended: true }));
   }
@@ -30,7 +34,7 @@ export default class Microservice {
   }
 
   broad(app: Express) {
-    app.listen(process.env.GATEWAY_PORT, () => {
+    app.listen(Number(process.env.GATEWAY_PORT), this.hostname, () => {
       console.log(
         `Domain: ${process.env.ROOT_DOMAIN}:${process.env.GATEWAY_PORT}`
       );

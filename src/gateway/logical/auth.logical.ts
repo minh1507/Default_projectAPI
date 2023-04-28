@@ -1,11 +1,9 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 import axios from "axios";
 
 import registry from "../common/json/registry.json" assert { type: "json" };
 
 import { authGuard } from "../common/app/app.common.ts";
-
-let router = express.Router();
 
 export const auth = async (req: Request, res: Response) => {
   let apiName = req.params.apiName;

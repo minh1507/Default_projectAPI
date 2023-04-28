@@ -61,7 +61,6 @@ export const findById = async (req: Request, res: Response) => {
       return res.status(200).json({ error: "Api not found" });
     }
   } catch (error) {
-    console.log(error);
     return res.status(203).json("Api not accepted");
   }
 };
