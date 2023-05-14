@@ -19,7 +19,7 @@ export default class main {
   private __filename = fileURLToPath(import.meta.url);
   private __dirname = path.dirname(this.__filename);
   private __dirsource = path.join(this.__dirname, "..");
-  private port = process.env.ANIMAL_PORT;
+  private port = process.env.APP1;
   private app: Express = express();
 
   middleware(app: Express) {

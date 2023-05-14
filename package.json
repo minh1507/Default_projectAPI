@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "tsc --project tsconfig.json --noEmit false && --allowImportingTsExtensions false && --incremental false",
-    "serve-app1": "nodemon --watch src src/app1/servers/index.server.ts",
-    "authen": "nodemon --watch src src/authentication/servers/index.server.ts",
-    "gateway": "nodemon --watch src src/gateway/servers/index.server.ts",
+    "serve-app1": "nodemon --watch src src/app1/main.ts",
+    "authen": "nodemon --watch src src/authentication/main.ts",
+    "gateway": "nodemon --watch src src/gateway/main.ts",
     "migrate": "npx sequelize-cli db:migrate",
     "new-migration": "npx sequelize-cli migration:generate --name $NAME",
     "new-seed": "npx sequelize-cli seed:generate --name $NAME",

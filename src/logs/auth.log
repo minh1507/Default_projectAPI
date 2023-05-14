@@ -5,3 +5,6 @@
 [2023-04-28T16:10:53.969] [FATAL] POST - Remote: undefined, path: /api/auth/login
 [2023-04-28T16:12:16.197] [FATAL] POST - Remote: undefined, path: /api/auth/login
 [2023-04-28T16:12:21.249] [FATAL] POST - Remote: undefined, path: /api/auth/login
+[2023-04-29T00:52:02.942] [FATAL] POST - Remote: undefined, path: /api/auth/login
+[2023-05-08T19:54:51.631] [FATAL] POST - Remote: undefined, path: /api/auth/login
+[2023-05-14T17:30:17.258] [FATAL] POST - Remote: undefined, path: /api/auth/login

@@ -9,7 +9,7 @@
         "name": "MIT"
       }
   },
-  "host": "kokuro.online/api",
+  "host": "localhost:8080/api",
   "schemes": ["http", "https"],
   "tags": [
     {
