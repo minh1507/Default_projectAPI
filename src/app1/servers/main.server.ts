@@ -5,10 +5,7 @@ import bodyParser from "body-parser";
 
 import helmet from "helmet";
 import interceptor from "../middleware/inteceptor.middleware.ts";
-import path from "path";
 import cookieParser from "cookie-parser";
-
-import { fileURLToPath } from "url";
 
 import * as session from "../middleware/session.middleware.ts";
 import * as block from "../middleware/cors.middleware.ts";
@@ -16,10 +13,8 @@ import * as seq from "../config/connect.database.ts";
 import * as routes from "../routes/index.route.ts";
 
 export default class main {
-  private __filename = fileURLToPath(import.meta.url);
-  private __dirname = path.dirname(this.__filename);
-  private __dirsource = path.join(this.__dirname, "..");
   private port = process.env.APP1;
+  private domain = process.env.ROOT_DOMAIN
   private app: Express = express();
 
   middleware(app: Express) {
@@ -45,7 +40,7 @@ export default class main {
 
   broad(app: Express){
     app.listen(this.port, () => {
-      console.log(`Domain: ${process.env.ROOT_DOMAIN}:${this.port}`);
+      console.log(`Domain: ${this.domain}:${this.port}`);
     });
   }
 

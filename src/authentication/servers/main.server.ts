@@ -12,6 +12,8 @@ import * as seq from "../config/connect.database.ts";
 import * as routes from "../routes/index.route.ts";
 
 export default class main {
+  private port = process.env.AUTH_PORT;
+  private domain = process.env.ROOT_DOMAIN;
   private app: Express = express();
 
   middleware(app: Express) {
@@ -36,8 +38,8 @@ export default class main {
   }
 
   broad(app: Express){
-    app.listen(process.env.AUTH_PORT, () => {
-      console.log(`Domain: ${process.env.ROOT_DOMAIN}:${process.env.AUTH_PORT}`);
+    app.listen(this.port, () => {
+      console.log(`Domain: ${this.domain}:${this.port}`);
     });
   }
 

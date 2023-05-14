@@ -10,9 +10,11 @@ import * as block from "../middlewares/cors.middleware.ts";
 import * as routes from "../routes/index.route.ts";
 
 import swaggerUi from "swagger-ui-express";
-import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert { type: "json" };
+import swaggerJsDocUi from "../common/json/swaggerDocs.json" assert {type: "json"};
 
 export default class Microservice {
+  private port = process.env.GATEWAY_PORT;
+  private domain = process.env.ROOT_DOMAIN
   private app: Express = express();
   private hostname: string = '0.0.0.0' 
 
@@ -34,9 +36,9 @@ export default class Microservice {
   }
 
   broad(app: Express) {
-    app.listen(Number(process.env.GATEWAY_PORT), this.hostname, () => {
+    app.listen(Number(this.port), this.hostname, () => {
       console.log(
-        `Domain: ${process.env.ROOT_DOMAIN}:${process.env.GATEWAY_PORT}`
+        `Domain: ${this.domain}:${this.port}`
       );
     });
   }
